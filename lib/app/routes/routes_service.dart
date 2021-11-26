@@ -11,34 +11,46 @@ class RoutesService {
   final GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
 
   defineRoutes() {
-    router.define(
+    _defineRoute(
       TabPage.routeName,
-      transitionType: TransitionType.fadeIn,
-      handler: Handler(
-        handlerFunc: (_, params) => const TabPage(),
-      ),
+      handler: _handleRoutes((_) => const TabPage()),
     );
 
-    router.define(
+    _defineRoute(
       MoviesPage.routeName,
-      transitionType: TransitionType.fadeIn,
-      handler: Handler(
-        handlerFunc: (_, params) => const MoviesPage(),
-      ),
+      handler: _handleRoutes((_) => const MoviesPage()),
     );
 
-    router.define(
+    _defineRoute(
       MovieDetailsPage.routeName,
-      transitionType: TransitionType.fadeIn,
-      handler: Handler(
-        handlerFunc: (context, params) {
-          final movie = context!.settings!.arguments as Movie;
-          return MovieDetailsPage(movie: movie);
-        },
-      ),
+      handler: _handleRoutes((args) => MovieDetailsPage(movie: args as Movie)),
+    );
+  }
+}
+
+extension Helpers on RoutesService {
+  _defineRoute(
+    String routeName, {
+    required Handler handler,
+    TransitionType transitionType = TransitionType.fadeIn,
+  }) {
+    router.define(
+      routeName,
+      transitionType: transitionType,
+      handler: handler,
     );
   }
 
+  _handleRoutes(Widget Function(Object? arguments) callback) {
+    return Handler(
+      handlerFunc: (context, params) {
+        return callback(context!.settings!.arguments);
+      },
+    );
+  }
+}
+
+extension Navigation on RoutesService {
   Future<dynamic> to(String routeName, dynamic arguments) {
     return key.currentState!.pushNamed(routeName, arguments: arguments);
   }

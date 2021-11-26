@@ -9,7 +9,7 @@ import 'package:theaterfy/features/movies/data/services/movies_service.dart';
 
 final sl = GetIt.instance;
 
-init() async {
+initDI() async {
   await initializeDateFormatting('pt_BR');
 
   // Clients

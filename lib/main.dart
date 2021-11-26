@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:theaterfy/app/routes/routes_service.dart';
+import 'package:theaterfy/di/injection_container.dart';
 import 'package:theaterfy/features/common/presentation/pages/tab_page.dart';
-import 'di/injection_container.dart' as di;
 
 void main() async {
-  await di.init();
+  await initDI();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final routesService = di.sl<RoutesService>();
+  final routesService = sl<RoutesService>();
   MyApp({Key? key}) : super(key: key);
 
   @override
