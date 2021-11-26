@@ -1,16 +1,20 @@
 # theaterfy
 
-A new Flutter project.
+## Routes Service
 
-## Getting Started
+In the app/routes folder, there's a RoutesService build using Fluro package to define the app routes (Params, Args)
 
-This project is a starting point for a Flutter application.
+The question is: Is it a good approach for seamless, easy and clean navigation for Flutter??
 
-A few resources to get you started if this is your first Flutter project:
+## How it starts:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![image](https://user-images.githubusercontent.com/13781127/143621405-3da8edcc-85a8-439b-9f1c-421822045929.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`routesService.key` is how we bind the `NavigationState` and remove the need for BuildContext to use the `Navigator.of(context)`
+
+`key.currentState!.pushNamed(routeName, arguments: arguments);` to push a new page
+
+## How to use:
+
+![image](https://user-images.githubusercontent.com/13781127/143621851-a6a49398-b9db-407e-b99c-105211fcc2ce.png)
+
