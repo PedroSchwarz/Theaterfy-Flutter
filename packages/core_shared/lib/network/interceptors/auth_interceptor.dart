@@ -1,15 +1,16 @@
 import 'package:dio/dio.dart';
 
 class AuthInterceptor extends Interceptor {
-  AuthInterceptor();
+  final String apiKey;
+
+  AuthInterceptor({required this.apiKey});
 
   @override
   void onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final token = await '';
-    options.headers['Authorization'] = 'Bearer $token';
+    options.headers['Authorization'] = 'Bearer $apiKey';
     return handler.next(options);
   }
 }

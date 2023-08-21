@@ -40,6 +40,10 @@ dependencies:
   intl: ^0.18.0
   flutter_localizations:
     sdk: flutter
+  alaska:
+    path: packages/alaska/
+  core_shared:
+    path: packages/core_shared/
 
 dev_dependencies:
   flutter_test:

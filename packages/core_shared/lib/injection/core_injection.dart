@@ -1,4 +1,5 @@
 import 'package:core_shared/network/dio_client_builder.dart';
+import 'package:core_shared/network/interceptors/auth_interceptor.dart';
 import 'package:core_shared/network/network_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -12,12 +13,15 @@ class CoreInjection {
   static Future<void> initCoreDependencies(
     VoidCallback unauthorizedCallback, {
     required String baseUrl,
+    required String apiKey,
   }) async {
     await initializeDateFormatting();
     await findSystemLocale();
 
     // Network
-    final dio = DioClientBuilder(baseUrl).build();
+    final dio = DioClientBuilder(baseUrl)
+        .addInterceptor(AuthInterceptor(apiKey: apiKey))
+        .build();
 
     locator.registerLazySingleton<Dio>(() => dio);
 
