@@ -1,0 +1,33 @@
+name: flutter_stuff
+
+packages:
+  - packages/**
+
+scripts:
+  analyze:
+    run: melos exec -- flutter analyze .
+    description: Run 'flutter analyze' in all packages
+
+  format:
+    run: melos exec -- dart format .
+    description: Run 'flutter format' in all packages
+
+  test:
+    run: melos exec --dir-exists="test" -- flutter test
+    description: Run 'flutter test' in all packages
+
+  generate_files:
+    run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+    description: Run 'dart run build_runner' in selected package
+    select-package:
+      flutter: true
+
+  localization:
+    run: melos exec -- flutter gen-l10n
+    description: Run 'flutter gen-l10n' in selected package
+    select-package:
+      flutter: true
+
+ide:
+  intellij:
+    enabled: false

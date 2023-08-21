@@ -1,0 +1,1 @@
+flutter build apk --release --flavor production -t lib/flavors/main.dart --obfuscate --split-debug-info=./debug_info
