@@ -44,6 +44,8 @@ dependencies:
     path: packages/alaska/
   core_shared:
     path: packages/core_shared/
+  movies:
+    path: packages/movies/
 
 dev_dependencies:
   flutter_test:
