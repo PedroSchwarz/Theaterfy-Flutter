@@ -1,10 +1,12 @@
 class BorderGroup {
   final double x400;
   final double x500;
+  final double x600;
 
   const BorderGroup({
     required this.x400,
     required this.x500,
+    required this.x600,
   });
 }
 

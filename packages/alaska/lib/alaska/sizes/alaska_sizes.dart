@@ -15,6 +15,7 @@ class AlaskaSizes {
     border: BorderGroup(
       x400: 1.0,
       x500: 2.0,
+      x600: 5.0,
     ),
     radius: RadiusGroup(
       x100: 4.00,

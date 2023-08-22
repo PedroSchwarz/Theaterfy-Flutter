@@ -28,7 +28,7 @@ class AppErrorView extends StatelessWidget {
           onPressed: onIconPressed,
           iconSize: theme.sizes.spacing.x700,
           icon: Icon(icon),
-          color: theme.colors.core.context.primary,
+          color: theme.colors.core.element.primary,
         ),
       ],
     );
