@@ -19,7 +19,12 @@ class MoviesListPage extends StatelessWidget {
         builder: (_, MoviesState state) {
           return state.map(
             loading: (_) => const AppLoader(),
-            success: (value) => MoviesGrid(movies: value.movies),
+            success: (value) => MoviesGrid(
+              movies: value.movies,
+              onRefresh: () async {
+                bloc.add(MoviesNextPage(value.currentPage));
+              },
+            ),
             empty: (_) => const Center(child: Text('Empty list')),
             failure: (value) => AppErrorView(
               message: value.message,

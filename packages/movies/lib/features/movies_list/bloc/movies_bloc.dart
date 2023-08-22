@@ -33,6 +33,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       },
     );
     on<MoviesNextPage>((event, emit) async {
+      emit(MoviesLoading());
       await _makeRequest(
         event.page,
         successCallback: (totalPages, currentPage, movies) {

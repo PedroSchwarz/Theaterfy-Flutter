@@ -23,6 +23,7 @@ class ScaleFlowDelegate extends FlowDelegate {
     yOffset = (scrollable.position.pixels / 8) * -1;
     if (scaleBy < 1) scaleBy = 1;
     if (scaleBy > 1.1) scaleBy = 1.1;
+    if (yOffset < 0) yOffset = 0;
 
     context.paintChild(
       0,
