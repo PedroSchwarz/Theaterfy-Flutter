@@ -13,7 +13,7 @@ class MoviesListProvider extends StatelessWidget {
     return BlocProvider(
       create: (_) => CoreInjection.locator.get<MoviesBloc>()
         ..add(
-          MoviesStarted(),
+          MoviesFetchPage(1),
         ),
       child: const MoviesListPage(),
     );

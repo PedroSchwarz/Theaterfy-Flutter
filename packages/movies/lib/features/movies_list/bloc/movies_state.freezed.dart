@@ -19,8 +19,8 @@ mixin _$MoviesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            int totalPages, int currentPage, List<MovieModel> movies)
+    required TResult Function(int totalPages, int currentPage,
+            List<MovieModel> movies, bool isLoadingMore)
         success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
@@ -29,7 +29,8 @@ mixin _$MoviesState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
@@ -38,7 +39,8 @@ mixin _$MoviesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
@@ -129,8 +131,8 @@ class _$MoviesLoading implements MoviesLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            int totalPages, int currentPage, List<MovieModel> movies)
+    required TResult Function(int totalPages, int currentPage,
+            List<MovieModel> movies, bool isLoadingMore)
         success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
@@ -142,7 +144,8 @@ class _$MoviesLoading implements MoviesLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
@@ -154,7 +157,8 @@ class _$MoviesLoading implements MoviesLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
@@ -214,7 +218,11 @@ abstract class _$$MoviesSuccessCopyWith<$Res> {
           _$MoviesSuccess value, $Res Function(_$MoviesSuccess) then) =
       __$$MoviesSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({int totalPages, int currentPage, List<MovieModel> movies});
+  $Res call(
+      {int totalPages,
+      int currentPage,
+      List<MovieModel> movies,
+      bool isLoadingMore});
 }
 
 /// @nodoc
@@ -231,6 +239,7 @@ class __$$MoviesSuccessCopyWithImpl<$Res>
     Object? totalPages = null,
     Object? currentPage = null,
     Object? movies = null,
+    Object? isLoadingMore = null,
   }) {
     return _then(_$MoviesSuccess(
       totalPages: null == totalPages
@@ -245,6 +254,10 @@ class __$$MoviesSuccessCopyWithImpl<$Res>
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
               as List<MovieModel>,
+      isLoadingMore: null == isLoadingMore
+          ? _value.isLoadingMore
+          : isLoadingMore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -255,7 +268,8 @@ class _$MoviesSuccess implements MoviesSuccess {
   _$MoviesSuccess(
       {required this.totalPages,
       required this.currentPage,
-      required final List<MovieModel> movies})
+      required final List<MovieModel> movies,
+      this.isLoadingMore = false})
       : _movies = movies;
 
   @override
@@ -271,8 +285,12 @@ class _$MoviesSuccess implements MoviesSuccess {
   }
 
   @override
+  @JsonKey()
+  final bool isLoadingMore;
+
+  @override
   String toString() {
-    return 'MoviesState.success(totalPages: $totalPages, currentPage: $currentPage, movies: $movies)';
+    return 'MoviesState.success(totalPages: $totalPages, currentPage: $currentPage, movies: $movies, isLoadingMore: $isLoadingMore)';
   }
 
   @override
@@ -284,12 +302,14 @@ class _$MoviesSuccess implements MoviesSuccess {
                 other.totalPages == totalPages) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
-            const DeepCollectionEquality().equals(other._movies, _movies));
+            const DeepCollectionEquality().equals(other._movies, _movies) &&
+            (identical(other.isLoadingMore, isLoadingMore) ||
+                other.isLoadingMore == isLoadingMore));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, totalPages, currentPage,
-      const DeepCollectionEquality().hash(_movies));
+      const DeepCollectionEquality().hash(_movies), isLoadingMore);
 
   @JsonKey(ignore: true)
   @override
@@ -301,39 +321,41 @@ class _$MoviesSuccess implements MoviesSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            int totalPages, int currentPage, List<MovieModel> movies)
+    required TResult Function(int totalPages, int currentPage,
+            List<MovieModel> movies, bool isLoadingMore)
         success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
-    return success(totalPages, currentPage, movies);
+    return success(totalPages, currentPage, movies, isLoadingMore);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(totalPages, currentPage, movies);
+    return success?.call(totalPages, currentPage, movies, isLoadingMore);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(totalPages, currentPage, movies);
+      return success(totalPages, currentPage, movies, isLoadingMore);
     }
     return orElse();
   }
@@ -380,11 +402,13 @@ abstract class MoviesSuccess implements MoviesState {
   factory MoviesSuccess(
       {required final int totalPages,
       required final int currentPage,
-      required final List<MovieModel> movies}) = _$MoviesSuccess;
+      required final List<MovieModel> movies,
+      final bool isLoadingMore}) = _$MoviesSuccess;
 
   int get totalPages;
   int get currentPage;
   List<MovieModel> get movies;
+  bool get isLoadingMore;
   @JsonKey(ignore: true)
   _$$MoviesSuccessCopyWith<_$MoviesSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -429,8 +453,8 @@ class _$MoviesEmpty implements MoviesEmpty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            int totalPages, int currentPage, List<MovieModel> movies)
+    required TResult Function(int totalPages, int currentPage,
+            List<MovieModel> movies, bool isLoadingMore)
         success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
@@ -442,7 +466,8 @@ class _$MoviesEmpty implements MoviesEmpty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
@@ -454,7 +479,8 @@ class _$MoviesEmpty implements MoviesEmpty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
@@ -573,8 +599,8 @@ class _$MoviesFailure implements MoviesFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            int totalPages, int currentPage, List<MovieModel> movies)
+    required TResult Function(int totalPages, int currentPage,
+            List<MovieModel> movies, bool isLoadingMore)
         success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
@@ -586,7 +612,8 @@ class _$MoviesFailure implements MoviesFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult? Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
@@ -598,7 +625,8 @@ class _$MoviesFailure implements MoviesFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(int totalPages, int currentPage, List<MovieModel> movies)?
+    TResult Function(int totalPages, int currentPage, List<MovieModel> movies,
+            bool isLoadingMore)?
         success,
     TResult Function()? empty,
     TResult Function(String message)? failure,

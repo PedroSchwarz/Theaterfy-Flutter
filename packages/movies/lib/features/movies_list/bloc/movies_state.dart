@@ -10,6 +10,7 @@ class MoviesState with _$MoviesState {
     required int totalPages,
     required int currentPage,
     required List<MovieModel> movies,
+    @Default(false) bool isLoadingMore,
   }) = MoviesSuccess;
   factory MoviesState.empty() = MoviesEmpty;
   factory MoviesState.failure({required String message}) = MoviesFailure;

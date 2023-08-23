@@ -4,6 +4,5 @@ part 'movies_event.freezed.dart';
 
 @freezed
 class MoviesEvent with _$MoviesEvent {
-  factory MoviesEvent.started() = MoviesStarted;
-  factory MoviesEvent.nextPage(int page) = MoviesNextPage;
+  factory MoviesEvent.fetchPage(int page) = MoviesFetchPage;
 }

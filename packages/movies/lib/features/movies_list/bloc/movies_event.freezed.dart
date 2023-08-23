@@ -16,43 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MoviesEvent {
+  int get page => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int page) nextPage,
+    required TResult Function(int page) fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int page)? nextPage,
+    TResult? Function(int page)? fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int page)? nextPage,
+    TResult Function(int page)? fetchPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MoviesStarted value) started,
-    required TResult Function(MoviesNextPage value) nextPage,
+    required TResult Function(MoviesFetchPage value) fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MoviesStarted value)? started,
-    TResult? Function(MoviesNextPage value)? nextPage,
+    TResult? Function(MoviesFetchPage value)? fetchPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MoviesStarted value)? started,
-    TResult Function(MoviesNextPage value)? nextPage,
+    TResult Function(MoviesFetchPage value)? fetchPage,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MoviesEventCopyWith<MoviesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +60,8 @@ abstract class $MoviesEventCopyWith<$Res> {
   factory $MoviesEventCopyWith(
           MoviesEvent value, $Res Function(MoviesEvent) then) =
       _$MoviesEventCopyWithImpl<$Res, MoviesEvent>;
+  @useResult
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -72,125 +73,38 @@ class _$MoviesEventCopyWithImpl<$Res, $Val extends MoviesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_value.copyWith(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$MoviesStartedCopyWith<$Res> {
-  factory _$$MoviesStartedCopyWith(
-          _$MoviesStarted value, $Res Function(_$MoviesStarted) then) =
-      __$$MoviesStartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$MoviesStartedCopyWithImpl<$Res>
-    extends _$MoviesEventCopyWithImpl<$Res, _$MoviesStarted>
-    implements _$$MoviesStartedCopyWith<$Res> {
-  __$$MoviesStartedCopyWithImpl(
-      _$MoviesStarted _value, $Res Function(_$MoviesStarted) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$MoviesStarted implements MoviesStarted {
-  _$MoviesStarted();
-
+abstract class _$$MoviesFetchPageCopyWith<$Res>
+    implements $MoviesEventCopyWith<$Res> {
+  factory _$$MoviesFetchPageCopyWith(
+          _$MoviesFetchPage value, $Res Function(_$MoviesFetchPage) then) =
+      __$$MoviesFetchPageCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'MoviesEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MoviesStarted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int page) nextPage,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int page)? nextPage,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int page)? nextPage,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MoviesStarted value) started,
-    required TResult Function(MoviesNextPage value) nextPage,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MoviesStarted value)? started,
-    TResult? Function(MoviesNextPage value)? nextPage,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MoviesStarted value)? started,
-    TResult Function(MoviesNextPage value)? nextPage,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class MoviesStarted implements MoviesEvent {
-  factory MoviesStarted() = _$MoviesStarted;
-}
-
-/// @nodoc
-abstract class _$$MoviesNextPageCopyWith<$Res> {
-  factory _$$MoviesNextPageCopyWith(
-          _$MoviesNextPage value, $Res Function(_$MoviesNextPage) then) =
-      __$$MoviesNextPageCopyWithImpl<$Res>;
   @useResult
   $Res call({int page});
 }
 
 /// @nodoc
-class __$$MoviesNextPageCopyWithImpl<$Res>
-    extends _$MoviesEventCopyWithImpl<$Res, _$MoviesNextPage>
-    implements _$$MoviesNextPageCopyWith<$Res> {
-  __$$MoviesNextPageCopyWithImpl(
-      _$MoviesNextPage _value, $Res Function(_$MoviesNextPage) _then)
+class __$$MoviesFetchPageCopyWithImpl<$Res>
+    extends _$MoviesEventCopyWithImpl<$Res, _$MoviesFetchPage>
+    implements _$$MoviesFetchPageCopyWith<$Res> {
+  __$$MoviesFetchPageCopyWithImpl(
+      _$MoviesFetchPage _value, $Res Function(_$MoviesFetchPage) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -198,7 +112,7 @@ class __$$MoviesNextPageCopyWithImpl<$Res>
   $Res call({
     Object? page = null,
   }) {
-    return _then(_$MoviesNextPage(
+    return _then(_$MoviesFetchPage(
       null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -209,22 +123,22 @@ class __$$MoviesNextPageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MoviesNextPage implements MoviesNextPage {
-  _$MoviesNextPage(this.page);
+class _$MoviesFetchPage implements MoviesFetchPage {
+  _$MoviesFetchPage(this.page);
 
   @override
   final int page;
 
   @override
   String toString() {
-    return 'MoviesEvent.nextPage(page: $page)';
+    return 'MoviesEvent.fetchPage(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MoviesNextPage &&
+            other is _$MoviesFetchPage &&
             (identical(other.page, page) || other.page == page));
   }
 
@@ -234,36 +148,33 @@ class _$MoviesNextPage implements MoviesNextPage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MoviesNextPageCopyWith<_$MoviesNextPage> get copyWith =>
-      __$$MoviesNextPageCopyWithImpl<_$MoviesNextPage>(this, _$identity);
+  _$$MoviesFetchPageCopyWith<_$MoviesFetchPage> get copyWith =>
+      __$$MoviesFetchPageCopyWithImpl<_$MoviesFetchPage>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int page) nextPage,
+    required TResult Function(int page) fetchPage,
   }) {
-    return nextPage(page);
+    return fetchPage(page);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int page)? nextPage,
+    TResult? Function(int page)? fetchPage,
   }) {
-    return nextPage?.call(page);
+    return fetchPage?.call(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int page)? nextPage,
+    TResult Function(int page)? fetchPage,
     required TResult orElse(),
   }) {
-    if (nextPage != null) {
-      return nextPage(page);
+    if (fetchPage != null) {
+      return fetchPage(page);
     }
     return orElse();
   }
@@ -271,40 +182,39 @@ class _$MoviesNextPage implements MoviesNextPage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MoviesStarted value) started,
-    required TResult Function(MoviesNextPage value) nextPage,
+    required TResult Function(MoviesFetchPage value) fetchPage,
   }) {
-    return nextPage(this);
+    return fetchPage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MoviesStarted value)? started,
-    TResult? Function(MoviesNextPage value)? nextPage,
+    TResult? Function(MoviesFetchPage value)? fetchPage,
   }) {
-    return nextPage?.call(this);
+    return fetchPage?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MoviesStarted value)? started,
-    TResult Function(MoviesNextPage value)? nextPage,
+    TResult Function(MoviesFetchPage value)? fetchPage,
     required TResult orElse(),
   }) {
-    if (nextPage != null) {
-      return nextPage(this);
+    if (fetchPage != null) {
+      return fetchPage(this);
     }
     return orElse();
   }
 }
 
-abstract class MoviesNextPage implements MoviesEvent {
-  factory MoviesNextPage(final int page) = _$MoviesNextPage;
+abstract class MoviesFetchPage implements MoviesEvent {
+  factory MoviesFetchPage(final int page) = _$MoviesFetchPage;
 
+  @override
   int get page;
+  @override
   @JsonKey(ignore: true)
-  _$$MoviesNextPageCopyWith<_$MoviesNextPage> get copyWith =>
+  _$$MoviesFetchPageCopyWith<_$MoviesFetchPage> get copyWith =>
       throw _privateConstructorUsedError;
 }

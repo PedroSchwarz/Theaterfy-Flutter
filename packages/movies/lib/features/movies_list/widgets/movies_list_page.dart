@@ -22,14 +22,17 @@ class MoviesListPage extends StatelessWidget {
             success: (value) => MoviesGrid(
               movies: value.movies,
               onRefresh: () async {
-                bloc.add(MoviesNextPage(value.currentPage));
+                bloc.add(MoviesFetchPage(1));
+              },
+              onNextPage: () async {
+                bloc.add(MoviesFetchPage(value.currentPage + 1));
               },
             ),
             empty: (_) => const Center(child: Text('Empty list')),
             failure: (value) => AppErrorView(
               message: value.message,
               icon: Icons.refresh,
-              onIconPressed: () => bloc.add(MoviesStarted()),
+              onIconPressed: () => bloc.add(MoviesFetchPage(1)),
             ),
           );
         },
