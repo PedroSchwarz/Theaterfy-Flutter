@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/features/movies_list/bloc/movies_bloc.dart';
 import 'package:movies/features/movies_list/bloc/movies_event.dart';
 import 'package:movies/features/movies_list/bloc/movies_state.dart';
-import 'package:movies/features/movies_list/widgets/grid/movies_grid.dart';
+import 'package:movies/features/movies_list/widgets/body/movies_body.dart';
 
 class MoviesListPage extends StatelessWidget {
   const MoviesListPage({super.key});
@@ -19,8 +19,9 @@ class MoviesListPage extends StatelessWidget {
         builder: (_, MoviesState state) {
           return state.map(
             loading: (_) => const AppLoader(),
-            success: (value) => MoviesGrid(
+            success: (value) => MoviesBody(
               movies: value.movies,
+              isLoadingMore: value.isLoadingMore,
               onRefresh: () async {
                 bloc.add(MoviesFetchPage(1));
               },

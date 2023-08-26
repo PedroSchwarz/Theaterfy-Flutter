@@ -9,7 +9,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Modular.setInitialRoute('/movies/');
+    Modular.setInitialRoute('/movies/search');
 
     return ModularApp(
       module: MainModule(),

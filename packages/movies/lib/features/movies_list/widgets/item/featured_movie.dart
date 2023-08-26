@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:movies/features/movies_list/use_case/models/movie_model.dart';
 import 'package:alaska/alaska.dart';
 import 'package:movies/features/movies_list/widgets/content/movie_background.dart';
 import 'package:movies/features/movies_list/widgets/content/movie_content.dart';
 import 'package:movies/features/movies_list/widgets/content/movie_item_gradient.dart';
+import 'package:movies/features/shared/models/movie_model.dart';
 
 class FeaturedMovie extends StatefulWidget {
   final MovieModel movie;
