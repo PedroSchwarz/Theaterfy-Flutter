@@ -1,30 +1,39 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class AppRoute {
+class AppRoute<T> {
   final String moduleName;
   final String path;
+  final Widget Function(T?) builder;
+  final PageTransitionType type;
 
-  const AppRoute({required this.moduleName, required this.path});
+  const AppRoute({
+    required this.moduleName,
+    required this.path,
+    required this.builder,
+    this.type = PageTransitionType.rightToLeft,
+  });
 
-  push({dynamic arguments}) {
-    Modular.to.pushNamed('$moduleName$path', arguments: arguments);
-  }
+  String get fullPath => '$moduleName$path';
 
-  pushAndRemoveUntil({dynamic arguments}) {
-    Modular.to.pushNamedAndRemoveUntil(
+  push({required BuildContext context, T? arguments}) {
+    Navigator.of(context).pushNamed(
       '$moduleName$path',
-      (p0) => false,
       arguments: arguments,
     );
   }
 
-  replaceWith({dynamic arguments}) {
-    Modular.to.pushReplacementNamed('$moduleName$path', arguments: arguments);
+  pushAndRemoveUntil({required BuildContext context, T? arguments}) {
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      '$moduleName$path',
+      (_) => false,
+      arguments: arguments,
+    );
   }
 
-  pushTabChild({required String parentName, dynamic arguments}) {
-    Modular.to.navigate(
-      '$parentName$moduleName$path',
+  replaceWith({required BuildContext context, T? arguments}) {
+    Navigator.of(context).pushReplacementNamed(
+      '$moduleName$path',
       arguments: arguments,
     );
   }

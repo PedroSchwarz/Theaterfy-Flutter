@@ -1,16 +1,22 @@
 import 'package:core_shared/core_shared.dart';
-import 'package:movies/features/movies_list/route/movies_list_route.dart';
-import 'package:movies/features/search/route/search_route.dart';
+import 'package:movies/features/movies_list/movies_list_provider.dart';
+import 'package:movies/features/search/search_provider.dart';
 
-class MoviesModule extends Module {
+class MoviesModule extends FeatureRoutes {
   static const String moduleName = '/movies';
 
-  static MoviesListRoute moviesList = MoviesListRoute(moduleName);
-  static SearchRoute search = SearchRoute(moduleName);
+  static AppRoute base = AppRoute(
+    moduleName: moduleName,
+    path: '/',
+    builder: (_) => const MoviesListProvider(),
+  );
+
+  static AppRoute search = AppRoute(
+    moduleName: moduleName,
+    path: '/search',
+    builder: (args) => const SearchProvider(),
+  );
 
   @override
-  List<ModularRoute> get routes => [
-        ...moviesList.getRoutes(),
-        ...search.getRoutes(),
-      ];
+  List<AppRoute> getRoutes() => [base, search];
 }

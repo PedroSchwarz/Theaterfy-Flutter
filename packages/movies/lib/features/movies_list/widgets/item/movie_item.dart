@@ -4,6 +4,7 @@ import 'package:movies/features/movies_list/widgets/content/movie_background.dar
 import 'package:movies/features/movies_list/widgets/content/movie_content.dart';
 import 'package:movies/features/movies_list/widgets/content/movie_item_gradient.dart';
 import 'package:movies/features/shared/models/movie_model.dart';
+import 'package:movies/module/module.dart';
 
 class MovieItem extends StatelessWidget {
   final MovieModel movie;
@@ -43,7 +44,12 @@ class MovieItem extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    MoviesModule.search.push(
+                      context: context,
+                      arguments: movie,
+                    );
+                  },
                 ),
               ),
             ),

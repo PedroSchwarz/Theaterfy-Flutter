@@ -1,9 +1,5 @@
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:core_shared/routes/app_route.dart';
 
 abstract class FeatureRoutes {
-  final String moduleName;
-
-  FeatureRoutes(this.moduleName);
-
-  List<ChildRoute> getRoutes();
+  List<AppRoute> getRoutes();
 }
