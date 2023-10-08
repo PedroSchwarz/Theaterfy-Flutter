@@ -31,7 +31,9 @@ class MovieScore extends StatelessWidget with MovieScoreConfigMixin {
             alignment: Alignment.center,
             child: Text(
               voteAverage.toString(),
-              style: theme.typography.h4,
+              style: theme.typography.h4.copyWith(
+                color: theme.colors.core.base.overSecondary,
+              ),
             ),
           )
         ],

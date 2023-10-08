@@ -32,9 +32,13 @@ class MovieContent extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: isFeatured ? theme.typography.h2 : theme.typography.h4,
+                  style:
+                      (isFeatured ? theme.typography.h2 : theme.typography.h4)
+                          .copyWith(
+                    color: theme.colors.core.base.overSecondary,
+                  ),
                 ),
-                SizedBox(height: theme.sizes.spacing.x400),
+                SizedBox(height: theme.sizes.spacing.x300),
                 Text(
                   overview,
                   maxLines: 1,

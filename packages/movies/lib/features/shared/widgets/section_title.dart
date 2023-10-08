@@ -14,7 +14,7 @@ class SectionTitle extends StatelessWidget {
       expandedHeight: 100,
       floating: false,
       flexibleSpace: FlexibleSpaceBar(
-        title: Text(title),
+        title: Text(title, style: theme.typography.h2),
         centerTitle: false,
         titlePadding: EdgeInsets.all(theme.sizes.spacing.x400),
       ),
