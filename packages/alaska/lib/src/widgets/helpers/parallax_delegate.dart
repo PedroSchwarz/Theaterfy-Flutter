@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class ParallaxFlowDelegate extends FlowDelegate {
   final ScrollableState scrollable;
   final BuildContext listItemContext;
-  final bool canPrint;
   final GlobalKey backgroundImageKey;
 
   ParallaxFlowDelegate({
     required this.scrollable,
     required this.listItemContext,
-    required this.canPrint,
     required this.backgroundImageKey,
   }) : super(repaint: scrollable.position);
 
