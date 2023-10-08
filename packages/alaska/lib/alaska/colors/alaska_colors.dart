@@ -52,13 +52,13 @@ class AlaskaColors {
       positiveBackground: Color(0xFFD6FFDF),
     ),
     text: TextGroup(
-      disabled: Color(0xFFC9CAD4),
+      disabled: Color(0xFF757680),
       negative: Color(0xFFFFFFFF),
       onSuccess: Color(0xFF008061),
       onError: Color(0xFFCD1A1A),
       placeholder: Color(0xFF9599A6),
       primary: Color(0xFF2F2F33),
-      secondary: Color(0xFF757680),
+      secondary: Color(0xFFC9CAD4),
     ),
   );
 
