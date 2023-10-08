@@ -17,7 +17,6 @@ class MovieBackground extends StatelessWidget {
 
     return Flow(
       delegate: ParallaxFlowDelegate(
-        canPrint: true,
         scrollable: Scrollable.of(context),
         listItemContext: context,
         backgroundImageKey: backgroundImageKey,
